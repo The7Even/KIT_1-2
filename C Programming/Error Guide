@@ -1,0 +1,7 @@
+혹시나 include 안되고 lib파일 불러오기 실패하면
+
+1. C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt (포함 디렉터리)
+
+2. C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.26100.0\ucrt\x64 (라이브러리 디렉터리)
+
+두 파일 주소를 각각의 위치에 붙여넣기
