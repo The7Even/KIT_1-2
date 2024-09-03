@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(void) {
+	int result = 0;
+	int num1, num2;
+
+	num1 = num2 = 0;
+
+	printf("두개의 정수를 입력하세요(작은숫자, 큰숫자 순) >>>");
+	scanf_s("%d %d", &num1, &num2);
+
+	result = (num1 + num2) * ((num2 - num1 + 1)/2);
+
+	printf("\n%d 이상과 %d 이하의 정수의 합은 %d 입니다.", num1, num2, result);
+	return 0;
+}
