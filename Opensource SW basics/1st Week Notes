@@ -1,3 +1,69 @@
 Github, Linux - CLI (Command Line Interface) *매우 중요
 - MS-DOS도 CLI의 일종
 
+VCS - Version Control System
+- 버전별로 비교나 그런 작업이 수월하다고 함.
+
+* 그래서 우리가 쓸건? 
+"Git"
+- Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+>> Git은 아주 작은 것 부터 초대형 프로젝트까지 빠르고 효율적으로 관리할 수 있도록 설계된 무료 오픈소스 VCS입니다.
+
+* 그러면 그 Git을 왜 쓰는데?
+1. 버전 관리
+>>> 수정한 기록을 확인할 수 있는 기능임. 아예 과거 버전으로 되돌릴 수 있는 기능이다. 나무위키에도 이런거 있음
+2. 백업
+>>> 클라우드 기반의 공간을 제공하여 1번에서 서술한 버전 관리를 백업하여줌.
+3. 협업
+>>> 버전 관리 기능이 나 한명만 해당되는게 아니라 모든 구성원이 언제 어떻게 수정하였는지를 기록해줌. 백업 기능도 역시 협업에 효과적인 역할을 함. 결과적으로 협업에 긍정적인 영향을 미치게 됨.
+
+여러개의 Local Repository가 Remote repository(원격 저장소)에 저장된 데이터에 Access하는 방식으로 구동됨.
+
+ex) 한명의 사용자가 원격 저장소에 하나의 소스코드를 업로드하여 저장하였을 경우, 다른 사용자들에게 업로드 된 후 해당하는 소스코드가 반영된 원격 저장소가 보여지게 됨.
+말 그대로 "원격" 저장소이기 때문에 장소에 구애받지 않고 어디서든 저장소에 접근할 수 있어서 협업관련 부분에서 좋은 모습을 보임..
+
+텍스트로 그리는 그림
+      Project A        < Remote Repository
+     /  /   \   \       (A~D 사용자가 하나의 원격저장소[Project A]에 연결되어 작동한다.)
+    A   B    C   D     < Local Repository
+
+* Git의 버전 관리 원리 (중요)
+workspace > index > local repository > remote repository
+---------------------------------------------------------------------------------
+workspace > index                                        - add (-u)
+            index > local repository                     - commit
+workspace >       > local repository                     - commit -a
+---------------------------------------------------------------------------------
+                    local repository > remote repository - push
+workspace <       <                  < remote repository - pull / rebase
+                    local repository < remote repository - fetch
+-----------------------------------revert----------------------------------------
+workspace <       < local repository                     - checkout HEAD
+workspace < index                                        - checkout
+----------------------------------compare----------------------------------------
+workspace - index - local repository                     - diff HEAD (local user)
+workspace - index                                        - diff
+---------------------------------------------------------------------------------
+workspace - 작업 트리
+> 내 컴퓨터에서 버전 관리를 수행.
+> 해당 폴더 내 파일들은 git에 의해 버전 관리 대상
+index - 인덱스
+> 파일의 내용이 변경될때 변경 내용을 내부적으로 indexing
+> Stage라고도 불림.
+local repository - (로컬 저장소)
+> index에 의해 indexing된 변경 내용들이 저장됨.
+> Workspace 내부의 ".git" Directory가 local repository임. (기본적으로 숨김처리)
+remote repository - (원격 저장소)
+> local repository에 commit된 파일의 변경내용이 저장됨.
+> 일명 클라우드 저장소.
+--------------------------------------------------------------------------------
+add > workspace내부 파일이 변경되면 해당됨. index에 indexing하라는 명령
+commit > index에 indexing된 파일들의 변경사항을 local repository에 저장하라는 명령
+commit -a > add와 commit 명령어를 묶어서 한번에 처리하라는 명령. -a는 all을 의미함.
+push > local repository에 저장된 파일들을 remote repository로 업로드하라는 명령
+pull/fetch > remote repository에 저장된 파일을 workspace/local repository로
+             다운로드 하라는 명령.
+           > 다른 사용자가 업데이트한 최신 내용을 내 컴퓨터로 다운 가능.
+push / pull > 나 기준 데이터를 밀어버리거나(업로드) 당겨오기(다운로드)
+checkout (HEAD) > 백업 데이터를 불러오라는 명령.
+---------------------------------------------------------------------------------
