@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+
+void PrintBits(float f_value)
+{
+	int* i_ptr = (int*)&f_value;
+	int mask = 1;
+
+	printf("%10.6f : ", f_value);
+
+	for (int shift_count = 31; shift_count >= 0; shift_count--)
+	{
+		int temp = (*i_ptr) >> shift_count;
+
+		temp = temp & mask;
+
+		printf("%d", temp);
+	}
+
+	printf("\n");
+}
+int main(void) {
+	PrintBits(85.8125f);
+	PrintBits(-85.8125f);
+	float a = INFINITY; float b = NAN;
+	PrintBits(a); PrintBits(b);
+	return 0;
+}
