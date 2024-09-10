@@ -1,3 +1,10 @@
+#include <stdio.h>
+
+int main(void) {
+  printf("Hello C World!\n");
+  return 0;
+}
+
 // 2^1024 = 1.798e308
 // 2^1000 = 1.072e301
 // 2^500 = 3.273e150
