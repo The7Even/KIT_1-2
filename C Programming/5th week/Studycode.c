@@ -49,7 +49,7 @@ int Recursive(int num4) // 탈출 조건이 있는 유한재귀함수, 호출할
 		return;
 	}
 
-	printf("Recursive Occured! %d Left",num4-1);
+	printf("Recursive Occured! %d Left\n",num4-1);
 
 	Recursive(num4-1);
 }
