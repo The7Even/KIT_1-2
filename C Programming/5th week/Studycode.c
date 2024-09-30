@@ -4,6 +4,7 @@ extern int number = 0; // 이거는 다른파일까지 영향을 주는 전역�
 
 int addnumber();
 int SimpleFunc();
+int Recursive();
 
 int main(void)
 {
@@ -40,4 +41,15 @@ int SimpleFunc(void)
 
 	num2++; num3++;
 	printf("static num2 : %d\nnon-static num3 : %d\n",num2, num3);
+}
+
+int Recursive(int num4) // 탈출 조건이 있는 유한재귀함수, 호출할때 몇번 반복할건지 적어서 보내주기만 하면됨. [ Recursive(5); ] << 이렇게 호출하면 5번 반복해서 실행되게끔 할 수 있음.
+{
+	if (num4 == 0) {
+		return;
+	}
+
+	printf("Recursive Occured! %d Left",num4-1);
+
+	Recursive(num4-1);
 }
