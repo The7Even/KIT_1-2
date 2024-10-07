@@ -11,7 +11,7 @@ int InputUser(void)
 {
 	int select = 0;
 	printf("----------------------------------------------\n");
-	printf("%d회차 게임을 시작합니다.\n",playtime);
+	printf("%d회차 게임을 시작합니다.\n", playtime);
 	printf("가위(1) / 바위(2) / 보(3) / 중단(0) \n>>>");
 	scanf_s("%d", &select);
 	return select;
@@ -19,13 +19,13 @@ int InputUser(void)
 
 int InputCom(void)
 {
-	srand(time(NULL));
 	int num = rand() % 3;
 	return num;
 }
 
 int DecideWinner(int num1, int num2)
 {
+	printf("----------------------------------------------\n");
 	if (num1 == 1)
 		printf("플레이어는 가위를 냈습니다.\n");
 	else if (num1 == 2)
@@ -65,6 +65,7 @@ int PrintResult(void)
 
 int main(void)
 {
+	srand(time(NULL));
 	while (1)
 	{
 		int usersel = InputUser();
