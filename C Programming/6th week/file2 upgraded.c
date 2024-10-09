@@ -57,6 +57,7 @@ int main(void)
 				printf("                                                                          \n");
 
 			GotoXY(0, 20);
+			system("pause");
 			break;
 		}
 
