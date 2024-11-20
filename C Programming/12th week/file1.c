@@ -6,16 +6,16 @@ int StrLen(const char* str);
 int main(void)
 {
 	char str[100];
-	fgets(str, sizeof(str), stdin);
+	gets(str, sizeof(str), stdin);
 
-	printf("입력받은 문자열의 길이 : %d\n",StrLen(str));
+	printf("입력받은 문자열의 길이 : %d\n", StrLen(str));
 	return 0;
 }
 
 int StrLen(const char* str)
 {
 	int len = 0;
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		if (str[i] == '\0')
 			return len;
