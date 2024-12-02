@@ -3,12 +3,17 @@
 #include <time.h>
 #include <Windows.h>
 
-#define PLAY_TIME 1000
-
-int best = 2258706;
+#define PLAY_TIME 500
 
 int main(void)
 {
+	FILE* fp = fopen("bestrec.txt", "r");
+
+	int best = 0;
+	fscanf_s(fp, "%d", &best);
+
+	fclose(fp);
+
 	srand(time(NULL));
 
 	clock_t start = clock();
@@ -18,7 +23,7 @@ int main(void)
 	int undercount = 0;
 	int count = 0;
 	int rep = 0;
-	for (int i = 0; i < PLAY_TIME ; i++)
+	for (int i = 0; i < PLAY_TIME; i++)
 	{
 		count = 0;
 		rep = 0;
@@ -41,6 +46,8 @@ int main(void)
 		if (best > count)
 		{
 			best = count;
+			FILE *fp = fopen("bestrec.txt", "w");
+			fprintf(fp, "%d", best);
 		}
 
 		if (clientbest > count)
