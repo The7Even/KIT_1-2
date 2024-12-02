@@ -8,7 +8,12 @@
 int main(void)
 {
 	FILE* fp = fopen("bestrec.txt", "r");
-
+	if (fp == NULL)
+	{
+		printf("bestrec.txt File Not Found. please add bestrec.txt");
+		return -1;
+	}
+	
 	int best = 0;
 	fscanf_s(fp, "%d", &best);
 
