@@ -26,7 +26,7 @@ int main(void)
     int option = 0;
     int selection = 0;
     Point Current = { 0,0 };
-        // 메뉴에 따라 수행하기를 반복 수행한다.
+    // 메뉴에 따라 수행하기를 반복 수행한다.
     while (1)
     {
         while (1)
@@ -35,7 +35,7 @@ int main(void)
             scanf_s("%d", &option);
             if (option == 0 || option == 1 || option == 2)
                 break;
-        } 
+        }
 
         // 0번 옵션 : 종료하기
         if (option == 0)
@@ -53,7 +53,7 @@ int main(void)
             printf("수정할 Point의 새 좌표 입력 : ");
             scanf_s("%d %d", &Newpoint.x, &Newpoint.y);
 
-            fseek(fp2, sizeof(int) * 2 * selection, SEEK_SET);
+            fseek(fp2, sizeof(Point) * selection, SEEK_SET);
             fwrite(&Newpoint, sizeof(Point), 1, fp);
         }
         // 2번 옵션 : 출력하기
@@ -62,14 +62,14 @@ int main(void)
             for (int i = 0; i < 10; i++)
             {
                 fseek(fp2, sizeof(int) * 2 * i, SEEK_SET);
-                Current.x = getc(fp2);
+                Current.x = fgetc(fp2);
                 fseek(fp2, sizeof(int) * (2 * i + 1), SEEK_SET);
-                Current.y = getc(fp2);
+                Current.y = fgetc(fp2);
                 printf("(%d, %d) ", Current.x, Current.y);
             }
             printf("\n");
         }
-     }
+    }
 
     // 파일을 닫는다.
     fclose(fp);
